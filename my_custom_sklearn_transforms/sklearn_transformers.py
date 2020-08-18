@@ -1,5 +1,4 @@
 from sklearn.base import BaseEstimator, TransformerMixin
-from imblearn.under_sampling import NearMiss
 
 # All sklearn Transforms must have the `transform` and `fit` methods
 class DropColumns(BaseEstimator, TransformerMixin):
@@ -49,8 +48,3 @@ def AddMediaExatas(dataframe):
     print("Adicionando Media Exatas")
     dataframe['MEDIA_EXATAS'] = (dataframe['NOTA_MF'] + dataframe['NOTA_GO'])/2
     return dataframe
-
-def BalanceData(X,y):
-    print("Balanceando dados")
-    nr = NearMiss()
-    X, y = nr.fit_sample(X, y)    
