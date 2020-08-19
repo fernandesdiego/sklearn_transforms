@@ -14,6 +14,10 @@ class DropColumns(BaseEstimator, TransformerMixin):
         # Retornamos um novo dataframe sem as colunas indesejadas
         return data.drop(labels=self.columns, axis='columns')
 
+def DropCol(dataframe):
+    print("Removendo Colunas")
+    return dataframe.drop('NOME', 'MATRICULA', 'INGLES', axis=1)
+    
 #fill ingles
 def FillIngles(dataframe):
     print("Preenchendo Ingles")
@@ -22,29 +26,26 @@ def FillIngles(dataframe):
 
 #remove quem não tem atividade nem hora de aula nem nota
 def RemoveDesistente(dataframe): 
-    print("Removendo desistente")
-    dataframe.drop(dataframe[(dataframe['NOTA_DE'] == 0) & (dataframe['NOTA_EM'] == 0) & (dataframe['NOTA_MF'] == 0) & (dataframe['NOTA_GO'] == 0) & (dataframe['H_AULA_PRES'] == 0) & (dataframe['TAREFAS_ONLINE'] == 0)].index, inplace=True)
-    return dataframe
+    print("Removendo desistente")    
+    return dataframe.drop(dataframe[(dataframe['NOTA_DE'] == 0) & (dataframe['NOTA_EM'] == 0) & (dataframe['NOTA_MF'] == 0) & (dataframe['NOTA_GO'] == 0) & (dataframe['H_AULA_PRES'] == 0) & (dataframe['TAREFAS_ONLINE'] == 0)].index)
 
 #fill nota go
 def FillGO(dataframe):
     print("Preenchendo GO")
-    dataframe.NOTA_GO.fillna((dataframe['NOTA_DE'] + dataframe['NOTA_EM'] + dataframe['NOTA_MF'])/3)
-    return dataframe
+    return dataframe.NOTA_GO.fillna((dataframe['NOTA_DE'] + dataframe['NOTA_EM'] + dataframe['NOTA_MF'])/3)
+    
 
 #add coluna media geral
 def AddMedia(dataframe):
-    print("Adicionando Media")
-    dataframe['MEDIA_GERAL'] = (dataframe['NOTA_DE'] + dataframe['NOTA_EM'] + dataframe['NOTA_MF'] + dataframe['NOTA_GO'])/4
-    return dataframe
+    print("Adicionando Media")    
+    return dataframe['MEDIA_GERAL'] = (dataframe['NOTA_DE'] + dataframe['NOTA_EM'] + dataframe['NOTA_MF'] + dataframe['NOTA_GO'])/4
 
 #add coluna media_humanas
 def AddMediaHumanas(dataframe):
     print("Adicionando Media Humanas")
-    dataframe['MEDIA_HUMANAS'] = (dataframe['NOTA_DE'] + dataframe['NOTA_EM'])/2 
+    return dataframe['MEDIA_HUMANAS'] = (dataframe['NOTA_DE'] + dataframe['NOTA_EM'])/2 
 
 #add coluna media_exatas
 def AddMediaExatas(dataframe):
-    print("Adicionando Media Exatas")
-    dataframe['MEDIA_EXATAS'] = (dataframe['NOTA_MF'] + dataframe['NOTA_GO'])/2
-    return dataframe
+    print("Adicionando Media Exatas")    
+    return dataframe['MEDIA_EXATAS'] = (dataframe['NOTA_MF'] + dataframe['NOTA_GO'])/2
