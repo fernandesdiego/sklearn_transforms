@@ -16,7 +16,7 @@ class DropColumns(BaseEstimator, TransformerMixin):
 
 def DropCol(dataframe):
     print("Removendo Colunas")
-    return dataframe.drop('NOME', 'MATRICULA', 'INGLES', axis=1)
+    return dataframe.drop(['NOME', 'MATRICULA', 'INGLES'], axis=1)
     
 #fill ingles
 def FillIngles(dataframe):
