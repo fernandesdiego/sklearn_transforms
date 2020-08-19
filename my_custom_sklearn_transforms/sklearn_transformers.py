@@ -38,14 +38,17 @@ def FillGO(dataframe):
 #add coluna media geral
 def AddMedia(dataframe):
     print("Adicionando Media")    
-    return dataframe['MEDIA_GERAL'] = (dataframe['NOTA_DE'] + dataframe['NOTA_EM'] + dataframe['NOTA_MF'] + dataframe['NOTA_GO'])/4
-
+    dataframe['MEDIA_GERAL'] = (dataframe['NOTA_DE'] + dataframe['NOTA_EM'] + dataframe['NOTA_MF'] + dataframe['NOTA_GO'])/4
+    return dataframe
+    
 #add coluna media_humanas
 def AddMediaHumanas(dataframe):
     print("Adicionando Media Humanas")
-    return dataframe['MEDIA_HUMANAS'] = (dataframe['NOTA_DE'] + dataframe['NOTA_EM'])/2 
+    dataframe['MEDIA_HUMANAS'] = (dataframe['NOTA_DE'] + dataframe['NOTA_EM'])/2 
+    return dataframe
 
 #add coluna media_exatas
 def AddMediaExatas(dataframe):
     print("Adicionando Media Exatas")    
-    return dataframe['MEDIA_EXATAS'] = (dataframe['NOTA_MF'] + dataframe['NOTA_GO'])/2
+    dataframe['MEDIA_EXATAS'] = (dataframe['NOTA_MF'] + dataframe['NOTA_GO'])/2
+    return dataframe
